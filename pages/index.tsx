@@ -1,18 +1,21 @@
-import React from "react";
-import { Spacer, Flex } from "@chakra-ui/react";
-
-import { Header, Main, Cards, Footer } from "@components";
+import React, { ChangeEvent, useEffect } from "react";
+import {
+    Textarea
+} from '@chakra-ui/react'
+import { Interpreter, InterpreterConfig } from 'node-spacey';
 
 const Home: React.FC = () => {
-  return (
-    <Flex direction="column" minH="100vh">
-      <Header />
-      <Main />
-      <Cards />
-      <Spacer />
-      <Footer />
-    </Flex>
-  );
+    useEffect(() => {
+        var interpreter = Interpreter.new(InterpreterConfig.from_source(`
+   	
+
+
+
+`, 0, false, false, false, false));
+        interpreter.run();
+        console.count('ran');
+    });
+    return null;
 };
 
 export default Home;
